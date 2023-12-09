@@ -1,0 +1,22 @@
+.logo{
+    padding: 15px 0;
+}
+
+.logo a{
+    text-decoration: none;
+}
+.name{
+    font-size: 35px;
+    font-weight: 700;
+    margin-left: 15px;
+    font-family: 'Kalpurush', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .logo{
+        padding: 10px 0;
+    }
+    .name{
+        font-size: 26px;
+    }
+  }
