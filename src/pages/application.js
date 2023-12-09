@@ -8,17 +8,20 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { BASE_URL } from "@/utils/api";
 import Swal from "sweetalert2";
-import Link from "next/link";
-import { useRouter } from "next/router";
 
 export default function Application() {
+  const [bloodGroup, setBloodGroup] = useState("");
   const [loadingBtn, setLoadingBtn] = useState(false);
-  const [hallName, setHallName] = useState([]);
-  const [custom1, setCustom1] = useState([]);
+  // Lavel State
   const [showLevel, setShowLevel] = useState({});
+  // University State
+  const [universityName, setUniversityName] = useState([]);
+  const [selectUniversity, setSelectUniversity] = useState("");
+  // Union State
+  const [unionName, setUnionName] = useState([]);
+  const [selectUnion, setSelectUnion] = useState("");
+  // Error Message
   const [errorMessage, setErrorMessage] = useState({});
-
-  const router = useRouter();
 
   const {
     register,
@@ -34,13 +37,35 @@ export default function Application() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   axios.get(BASE_URL + "/hall_information").then((res) => {
-  //     setHallName(res.data.data);
-  //   });
-  // }, []);
+  // Get All University Name
+  useEffect(() => {
+    axios.get(BASE_URL + "/university_view").then((res) => {
+      setUniversityName(res.data.data);
+    });
+  }, []);
+
+  // Get All Union Name
+  useEffect(() => {
+    axios.get(BASE_URL + "/union_view").then((res) => {
+      setUnionName(res.data.data);
+    });
+  }, []);
+
+  const handleBloodGroupChange = (event) => {
+    setBloodGroup(event.target.value);
+  };
+
+  const handleUniversityNameChange = (event) => {
+    setSelectUniversity(event.target.value);
+  };
+
+  const handleUnionNameChange = (event) => {
+    setSelectUnion(event.target.value);
+  };
+  console.log(selectUnion)
 
   const onSubmit = async (data) => {
+    console.log(data);
     // try {
     //   setLoadingBtn(true);
     //   data.hall_id = id;
@@ -151,7 +176,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            শিক্ষার্থীর নাম 
+                            শিক্ষার্থীর নাম
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -168,6 +193,39 @@ export default function Application() {
                         </Form.Group>
                       </Col>
 
+                      {/* Blood Group */}
+                      <Col lg={6} md={6} sm={12}>
+                        <Form.Group
+                          className={`${Style.contact} mb-3`}
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label className={Style.inputLabel}>
+                            রক্তের গ্রুপ
+                          </Form.Label>
+                          <Form.Select
+                            value={bloodGroup}
+                            onChange={handleBloodGroupChange}
+                            aria-label="Default select example"
+                            className={`${Style.inputField} ${Style.formSelect}`}
+                          >
+                            <option>Select your Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="B+">B+</option>
+                            <option value="AB+">AB+</option>
+                            <option value="O+">O+</option>
+                            <option value="A-">A-</option>
+                            <option value="B-">B-</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O-">O-</option>
+                          </Form.Select>
+                          {errors.name && (
+                            <span className="text-danger">
+                              Name is required
+                            </span>
+                          )}
+                        </Form.Group>
+                      </Col>
+
                       {/* Phone Number */}
                       <Col lg={6} md={6} sm={12}>
                         <Form.Group
@@ -175,7 +233,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            মোবাইল নাম্বার 
+                            মোবাইল নাম্বার
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -206,7 +264,7 @@ export default function Application() {
                             type="email"
                             className={`${Style.inputField} input`}
                             {...register("email", { required: true })}
-                            placeholder="ই-মেইল" 
+                            placeholder="ই-মেইল"
                           />
                           {errors.email && (
                             <span className="text-danger">
@@ -223,7 +281,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            প্রোপাইল ছবি 
+                            প্রোপাইল ছবি
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -249,20 +307,19 @@ export default function Application() {
                             <Form.Label className={Style.inputLabel}>
                               {showLevel?.level_university}
                             </Form.Label>
-                            <Form.Control
-                              size="sm"
-                              type="text"
-                              className={`${Style.inputField} input`}
-                              {...register("university", {
-                                required: true,
-                              })}
-                              placeholder={showLevel?.level_university}
-                            />
-                            {errors.university && (
-                              <span className="text-danger">
-                                {showLevel?.level_university} is required
-                              </span>
-                            )}
+                            <Form.Select
+                              value={selectUniversity}
+                              onChange={handleUniversityNameChange}
+                              aria-label="Default select example"
+                              className={`${Style.inputField} ${Style.formSelect}`}
+                            >
+                              <option>Select your University Name</option>
+                              {universityName?.map((item) => (
+                                <option key={item.id} value={item?.dureg}>
+                                  {item?.dureg}
+                                </option>
+                              ))}
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                       )}
@@ -417,20 +474,19 @@ export default function Application() {
                             <Form.Label className={Style.inputLabel}>
                               {showLevel?.level_union}
                             </Form.Label>
-                            <Form.Control
-                              size="sm"
-                              type="text"
-                              className={`${Style.inputField} input`}
-                              {...register("union", {
-                                required: true,
-                              })}
-                              placeholder={showLevel?.level_union}
-                            />
-                            {errors.union && (
-                              <span className="text-danger">
-                                {showLevel?.level_union} is required
-                              </span>
-                            )}
+                            <Form.Select
+                              value={selectUnion}
+                              onChange={handleUnionNameChange}
+                              aria-label="Default select example"
+                              className={`${Style.inputField} ${Style.formSelect}`}
+                            >
+                              <option>Select your Union Name</option>
+                              {unionName?.map((item) => (
+                                <option key={item.id} value={item?.id}>
+                                  {item?.dureg}
+                                </option>
+                              ))}
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                       )}
@@ -518,7 +574,6 @@ export default function Application() {
                           </Form.Group>
                         </Col>
                       )}
-
                     </Row>
 
                     {errorMessage && (
@@ -549,19 +604,15 @@ export default function Application() {
                     )}
 
                     {/* Submit Button */}
-                    {loadingBtn ? (
-                      <div className="d-flex justify-content-center">
-                        <Button disabled className={Style.submit}>
-                          Inserting...
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="d-flex justify-content-center">
-                        <Button type="submit" className={Style.submit}>
-                          Submit
-                        </Button>
-                      </div>
-                    )}
+                    <div className="d-flex justify-content-center">
+                      <Button
+                        type="submit"
+                        disabled={loadingBtn}
+                        className={Style.submit}
+                      >
+                        {loadingBtn ? "Inserting..." : "Submit"}
+                      </Button>
+                    </div>
                   </Form>
                 </div>
               </Col>
