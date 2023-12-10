@@ -64,19 +64,18 @@ export default function Application() {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       setLoadingBtn(true);
       data.bloodGroup = bloodGroup;
-      data.universityName = universityName;
-      data.unionName = unionName;
+      data.universityName = selectUniversity;
+      data.unionName = selectUnion;
 
       if (!bloodGroup) {
         toast.error("Please Select Blood Group");
         setLoadingBtn(false);
         return;
       }
-      if (bloodGroup === "Select your Blood Group" || bloodGroup === "") {
+      if (bloodGroup === "নির্বাচন করুন" || bloodGroup === "") {
         toast.error("Please Select Blood Group");
         setLoadingBtn(false);
         return;
@@ -100,7 +99,7 @@ export default function Application() {
           return;
         }
         if (
-          selectUniversity === "Select your University Name" ||
+          selectUniversity === "নির্বাচন করুন" ||
           selectUniversity === ""
         ) {
           toast.error("Please Select University");
@@ -136,7 +135,7 @@ export default function Application() {
           setLoadingBtn(false);
           return;
         }
-        if (selectUnion === "Select your Union Name" || selectUnion === "") {
+        if (selectUnion === "নির্বাচন করুন" || selectUnion === "") {
           toast.error("Please Select Union");
           setLoadingBtn(false);
           return;
@@ -215,7 +214,7 @@ export default function Application() {
               <Col lg={8} md={10} sm={12} className="mx-auto">
                 <div className={Style.application}>
                   <div className="headerTitle mb-3">
-                    <h3 class="headerTitleMain">APPLICATION</h3>
+                    <h3 class="headerTitleMain">সদস্য আবেদন ফরম</h3>
                   </div>
                   <Form onSubmit={handleSubmit(onSubmit)}>
                     <Row>
@@ -226,7 +225,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            শিক্ষার্থীর নাম
+                            শিক্ষার্থীর নাম <span className="text-danger">*</span>
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -250,7 +249,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            রক্তের গ্রুপ
+                            রক্তের গ্রুপ <span className="text-danger">*</span>
                           </Form.Label>
                           <Form.Select
                             value={bloodGroup}
@@ -258,7 +257,7 @@ export default function Application() {
                             aria-label="Default select example"
                             className={`${Style.inputField} ${Style.formSelect}`}
                           >
-                            <option>Select your Blood Group</option>
+                            <option>নির্বাচন করুন</option>
                             <option value="A+">A+</option>
                             <option value="B+">B+</option>
                             <option value="AB+">AB+</option>
@@ -278,7 +277,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            মোবাইল নাম্বার
+                            মোবাইল নাম্বার <span className="text-danger">*</span>
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -302,7 +301,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            ই-মেইল
+                            ই-মেইল <span className="text-danger">*</span>
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -326,7 +325,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            প্রোপাইল ছবি
+                            প্রোপাইল ছবি(৩০০*৩০০)
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -345,7 +344,7 @@ export default function Application() {
                             controlId="exampleForm.ControlInput1"
                           >
                             <Form.Label className={Style.inputLabel}>
-                              {showLevel?.level_university}
+                              {showLevel?.level_university} <span className="text-danger">*</span>
                             </Form.Label>
                             <Form.Select
                               value={selectUniversity}
@@ -353,7 +352,7 @@ export default function Application() {
                               aria-label="Default select example"
                               className={`${Style.inputField} ${Style.formSelect}`}
                             >
-                              <option>Select your University Name</option>
+                              <option>নির্বাচন করুন</option>
                               {universityName?.map((item) => (
                                 <option key={item.id} value={item?.dureg}>
                                   {item?.dureg}
@@ -372,7 +371,7 @@ export default function Application() {
                             controlId="exampleForm.ControlInput1"
                           >
                             <Form.Label className={Style.inputLabel}>
-                              {showLevel?.level_department}
+                              {showLevel?.level_department} <span className="text-danger">*</span>
                             </Form.Label>
                             <Form.Control
                               size="sm"
@@ -400,7 +399,7 @@ export default function Application() {
                             controlId="exampleForm.ControlInput1"
                           >
                             <Form.Label className={Style.inputLabel}>
-                              {showLevel?.level_custom2}
+                              {showLevel?.level_custom2} <span className="text-danger">*</span>
                             </Form.Label>
                             <Form.Control
                               size="sm"
@@ -512,7 +511,7 @@ export default function Application() {
                             controlId="exampleForm.ControlInput1"
                           >
                             <Form.Label className={Style.inputLabel}>
-                              {showLevel?.level_union}
+                              {showLevel?.level_union} <span className="text-danger">*</span>
                             </Form.Label>
                             <Form.Select
                               value={selectUnion}
@@ -520,7 +519,7 @@ export default function Application() {
                               aria-label="Default select example"
                               className={`${Style.inputField} ${Style.formSelect}`}
                             >
-                              <option>Select your Union Name</option>
+                              <option>নির্বাচন করুন</option>
                               {unionName?.map((item) => (
                                 <option key={item.id} value={item?.id}>
                                   {item?.dureg}
@@ -539,7 +538,7 @@ export default function Application() {
                             controlId="exampleForm.ControlInput1"
                           >
                             <Form.Label className={Style.inputLabel}>
-                              {showLevel?.level_permanent_address}
+                              {showLevel?.level_permanent_address} <span className="text-danger">*</span>
                             </Form.Label>
                             <Form.Control
                               size="sm"

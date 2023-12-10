@@ -10,6 +10,7 @@
     font-weight: 700;
     margin-left: 15px;
     font-family: 'Kalpurush', sans-serif;
+    margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
