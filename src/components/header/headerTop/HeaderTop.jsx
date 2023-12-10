@@ -13,7 +13,7 @@ const HeaderTop = () => {
         <div className={Style.logo}>
           <Link href="/" className="d-flex align-items-center">
             <img
-              src="./csfdu.jpeg"
+              src="/shreepur.jpeg"
               alt=""
               style={{ height: "40px", width: "auto" }}
             />
