@@ -254,6 +254,7 @@ export default function Application() {
                           <Form.Select
                             value={bloodGroup}
                             onChange={handleBloodGroupChange}
+                            style={{fontSize: '14px'}}
                             aria-label="Default select example"
                             className={`${Style.inputField} ${Style.formSelect}`}
                           >
@@ -349,6 +350,7 @@ export default function Application() {
                             <Form.Select
                               value={selectUniversity}
                               onChange={handleUniversityNameChange}
+                              style={{fontSize: '14px'}}
                               aria-label="Default select example"
                               className={`${Style.inputField} ${Style.formSelect}`}
                             >
@@ -516,6 +518,7 @@ export default function Application() {
                             <Form.Select
                               value={selectUnion}
                               onChange={handleUnionNameChange}
+                              style={{fontSize: '14px'}}
                               aria-label="Default select example"
                               className={`${Style.inputField} ${Style.formSelect}`}
                             >
