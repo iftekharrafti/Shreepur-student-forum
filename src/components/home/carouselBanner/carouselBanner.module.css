@@ -1,11 +1,11 @@
-.carousel{
-    width: 100vw;
-    height: 590px;
-    margin-bottom: 70px;
+.carousel {
+  width: 100vw;
+  height: 590px;
+  margin-bottom: 70px;
 }
-.carouselImg{
-    width: 100vw;
-    height: 590px;
+.carouselImg {
+  width: 100vw;
+  height: 590px;
 }
 /* Override the default carousel icon colors */
 .carousel-control-prev-icon,
@@ -13,11 +13,21 @@
   color: red; /* Change this to your desired color */
 }
 
-.title{
-    color: #009CFF;
-    font-size: 38px;
-    font-weight: 700;
+.title {
+  color: #009cff;
+  font-size: 38px;
+  font-weight: 700;
 }
-.text{
-    font-size: 18px;
+.text {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  /* Styles for small devices */
+  .carousel {
+    height: 225px;
+  }
+  .carouselImg {
+    height: 225px;
+  }
 }

@@ -118,15 +118,21 @@ export default function Application() {
       }
 
       if (showLevel?.level_custom1) {
-        formData.append("custom1", data.custom1);
+        if(data.custom1){
+          formData.append("custom1", data.custom1);
+        }
       }
 
       if (showLevel?.level_workplace) {
-        formData.append("workplace", data.workplace);
+        if(data.workplace){
+          formData.append("workplace", data.workplace);
+        }
       }
 
       if (showLevel?.level_current_address) {
-        formData.append("current_address", data.current_address);
+        if(data.current_address){
+          formData.append("current_address", data.current_address);
+        }
       }
 
       if (showLevel?.level_union) {
@@ -435,9 +441,7 @@ export default function Application() {
                               size="sm"
                               type="text"
                               className={`${Style.inputField} input`}
-                              {...register("custom1", {
-                                required: true,
-                              })}
+                              {...register("custom1")}
                               placeholder={showLevel?.level_custom1}
                             />
                             {errors.custom1 && (
@@ -463,9 +467,7 @@ export default function Application() {
                               size="sm"
                               type="text"
                               className={`${Style.inputField} input`}
-                              {...register("workplace", {
-                                required: true,
-                              })}
+                              {...register("workplace")}
                               placeholder={showLevel?.level_workplace}
                             />
                             {errors.workplace && (
@@ -491,9 +493,7 @@ export default function Application() {
                               size="sm"
                               type="text"
                               className={`${Style.inputField} input`}
-                              {...register("current_address", {
-                                required: true,
-                              })}
+                              {...register("current_address")}
                               placeholder={showLevel?.level_current_address}
                             />
                             {errors.current_address && (
@@ -575,9 +575,7 @@ export default function Application() {
                               size="sm"
                               type="text"
                               className={`${Style.inputField} input`}
-                              {...register("custom3", {
-                                required: true,
-                              })}
+                              {...register("custom3")}
                               placeholder={showLevel?.level_custom3}
                             />
                             {errors.custom3 && (
@@ -603,9 +601,7 @@ export default function Application() {
                               size="sm"
                               type="text"
                               className={`${Style.inputField} input`}
-                              {...register("custom4", {
-                                required: true,
-                              })}
+                              {...register("custom4")}
                               placeholder={showLevel?.level_custom4}
                             />
                             {errors.custom4 && (
