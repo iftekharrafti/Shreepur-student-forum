@@ -5,6 +5,7 @@ import useFetch from "@/hooks/useFetch";
 import HomeAdvisor from "@/components/home/homeAdvisor/HomeAdvisor";
 import HomeCountUp from "@/components/home/homeCountUp/HomeCountUp";
 import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 
 export default function Home() {
   const { data, loading } = useFetch("/home");
@@ -18,9 +19,7 @@ export default function Home() {
       </Head>
       <main>
         {loading ? (
-          <div className="loadingContainer">
-            <img src="./loading.gif" alt="" className="loadingGif" />
-          </div>
+          <LoadingSpinner />
         ) : (
           <>
             <CarouselBanner data={data} loading={loading} />

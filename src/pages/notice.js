@@ -2,6 +2,7 @@ import Head from "next/head";
 import useFetch from "@/hooks/useFetch";
 import { Container, Row } from "react-bootstrap";
 import NoticeCard from "@/components/noticeCard/NoticeCard";
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 
 export default function Notice() {
   const { data, loading } = useFetch("/notice");
@@ -15,9 +16,7 @@ export default function Notice() {
       </Head>
       <main>
         {loading ? (
-          <div className="loadingContainer">
-            <img src="./loading.gif" alt="" className="loadingGif" />
-          </div>
+          <LoadingSpinner />
         ) : (
           <>
             {/* Notice Title */}

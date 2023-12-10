@@ -1,6 +1,7 @@
 import Head from "next/head";
 import useFetch from "@/hooks/useFetch";
 import { Col, Container, Row } from "react-bootstrap";
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 
 export default function Advisor() {
   const { data, loading } = useFetch("/history");
@@ -14,9 +15,7 @@ export default function Advisor() {
       </Head>
       <main>
         {loading ? (
-          <div className="loadingContainer">
-            <img src="./loading.gif" alt="" className="loadingGif" />
-          </div>
+          <LoadingSpinner />
         ) : (
           <>
             <div className="headerTitle mt-5">
