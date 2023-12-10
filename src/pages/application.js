@@ -231,7 +231,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            শিক্ষার্থীর নাম <span className="text-danger">*</span>
+                            নাম <span className="text-danger">*</span>
                           </Form.Label>
                           <Form.Control
                             size="sm"
