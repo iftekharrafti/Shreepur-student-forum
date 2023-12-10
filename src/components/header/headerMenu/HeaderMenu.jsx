@@ -26,7 +26,7 @@ const HeaderMenu = () => {
     setIsMenuOpen(!isDropdownOpen);
   };
 
-  const { data, loading } = useFetch("/home/csfdu");
+  const { data, loading } = useFetch("/home");
 
   useEffect(() => {
     const { pathname } = router;

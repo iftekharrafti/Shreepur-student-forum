@@ -10,7 +10,7 @@ import HomeCountUp from "@/components/home/homeCountUp/HomeCountUp";
 import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
 
 export default function Home() {
-  const { data, loading } = useFetch("/home/csfdu");
+  const { data, loading } = useFetch("/home");
   return (
     <>
       <Head>

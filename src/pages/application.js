@@ -62,91 +62,140 @@ export default function Application() {
   const handleUnionNameChange = (event) => {
     setSelectUnion(event.target.value);
   };
-  console.log(selectUnion)
 
   const onSubmit = async (data) => {
-    console.log(data);
-    // try {
-    //   setLoadingBtn(true);
-    //   data.hall_id = id;
-    //   const formData = new FormData();
-    //   formData.append("name", data.name);
-    //   formData.append("hall_id", data.hall_id);
-    //   if (selectedHall?.level_registration) {
-    //     formData.append("registration", data.registration);
-    //   }
-    //   formData.append("phone", data.phone);
-    //   formData.append("email", data.email);
-    //   if (selectedHall?.level_profile_image) {
-    //     const profile_image = data.profile_image[0];
-    //     formData.append("profile_image", profile_image);
-    //   }
-    //   if (selectedHall?.level_file_name) {
-    //     const residential_image = data.residential_image[0];
-    //     formData.append("file_name", residential_image);
-    //   }
-    //   formData.append("password", data.password);
-    //   formData.append("password_confirmation", data.confirmPassword);
-    //   if (selectedHall?.level_custom1) {
-    //     formData.append("custom1", data.custom1);
-    //   }
-    //   if (selectedHall?.level_custom2) {
-    //     formData.append("custom2", data.custom2);
-    //   }
-    //   if (selectedHall?.level_custom3) {
-    //     formData.append("custom3", data.custom3);
-    //   }
-    //   if (data.password !== data.confirmPassword) {
-    //     setIsPasswordSimilar(false);
-    //     setLoadingBtn(false);
-    //   } else {
-    //     setIsPasswordSimilar(true);
-    //   }
-    //   const response = await axios({
-    //     method: "post",
-    //     url: BASE_URL + "/application_memebr",
-    //     data: formData,
-    //     headers: {
-    //       "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-    //     },
-    //   });
-    //   if (response.data.status === 700) {
-    //     setLoadingBtn(false);
-    //     setErrorMessage(response.data.message);
-    //     toast.error(response.data.message);
-    //   } else if (response.data.status === 600) {
-    //     setLoadingBtn(false);
-    //     setErrorMessage({});
-    //     toast.error(response.data.message);
-    //   } else if (response.data.status === 400) {
-    //     setLoadingBtn(false);
-    //     setErrorMessage({});
-    //     toast.error(response.data.message);
-    //   } else if (response.data.status === 300) {
-    //     setLoadingBtn(false);
-    //     setErrorMessage({});
-    //     toast.error(response.data.message);
-    //   } else if (response.data.status === 200) {
-    //     Swal.fire(
-    //       "Congratulations!",
-    //       "Registration Successful. Please, verify your email.",
-    //       "success"
-    //     );
-    //     setErrorMessage({});
-    //     toast.success("Registration Successful");
-    //     setLoadingBtn(false);
-    //     setIsPasswordSimilar(true);
-    //     router.push("/");
-    //     reset();
-    //   } else {
-    //     setErrorMessage({});
-    //     toast.error("Something went wrong");
-    //     setLoadingBtn(false);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   setLoadingBtn(false);
-    // }
+    try {
+      setLoadingBtn(true);
+      data.bloodGroup = bloodGroup;
+      data.universityName = universityName;
+      data.unionName = unionName;
+
+      if (!bloodGroup) {
+        toast.error("Please Select Blood Group");
+        setLoadingBtn(false);
+        return;
+      }
+      if (bloodGroup === "Select your Blood Group" || bloodGroup === "") {
+        toast.error("Please Select Blood Group");
+        setLoadingBtn(false);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("phone", data.phone);
+      formData.append("email", data.email);
+      formData.append("blood", data.bloodGroup);
+
+      if (data.profile_image[0]) {
+        const profile_image = data.profile_image[0];
+        formData.append("image", profile_image);
+      }
+
+      if (showLevel?.level_university) {
+        if (!selectUniversity) {
+          toast.error("Please Select University");
+          setLoadingBtn(false);
+          return;
+        }
+        if (
+          selectUniversity === "Select your University Name" ||
+          selectUniversity === ""
+        ) {
+          toast.error("Please Select University");
+          setLoadingBtn(false);
+          return;
+        }
+        formData.append("university", data.universityName);
+      }
+
+      if (showLevel?.level_department) {
+        formData.append("department", data.department);
+      }
+
+      if (showLevel?.level_custom2) {
+        formData.append("custom2", data.custom2);
+      }
+
+      if (showLevel?.level_custom1) {
+        formData.append("custom1", data.custom1);
+      }
+
+      if (showLevel?.level_workplace) {
+        formData.append("workplace", data.workplace);
+      }
+
+      if (showLevel?.level_current_address) {
+        formData.append("current_address", data.current_address);
+      }
+
+      if (showLevel?.level_union) {
+        if (!unionName) {
+          toast.error("Please Select Union");
+          setLoadingBtn(false);
+          return;
+        }
+        if (unionName === "Select your Union Name" || unionName === "") {
+          toast.error("Please Select Union");
+          setLoadingBtn(false);
+          return;
+        }
+        formData.append("address_union", data.unionName);
+      }
+
+      if (showLevel?.level_permanent_address) {
+        formData.append("permanent_address", data.permanent_address);
+      }
+
+      if (showLevel?.level_custom3) {
+        formData.append("custom3", data.custom3);
+      }
+
+      if (showLevel?.level_custom4) {
+        formData.append("custom4", data.custom4);
+      }
+
+      const response = await axios({
+        method: "post",
+        url: BASE_URL + "/application",
+        data: formData,
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+        },
+      });
+      console.log("response, ", response);
+      if (response.status === 200) {
+        Swal.fire("Congratulations!", "Registration Successful.", "success");
+        setErrorMessage({});
+        toast.success("Registration Successful");
+        setLoadingBtn(false);
+        // router.push("/");
+        reset();
+      } else {
+        setErrorMessage({});
+        toast.error("Something went wrong");
+        setLoadingBtn(false);
+      }
+    } catch (error) {
+      if (error.response.status === 402) {
+        console.log("error", error.response.data.message);
+        setErrorMessage(error.response.data.message);
+        setLoadingBtn(false);
+      } else if (
+        error.response.status === 403 ||
+        error.response.status === 479 ||
+        error.response.status === 456
+      ) {
+        setLoadingBtn(false);
+        setErrorMessage({});
+        toast.error(error.response.data.message);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error:", error.message);
+      }
+
+      setLoadingBtn(false);
+    }
   };
 
   return (
@@ -218,11 +267,6 @@ export default function Application() {
                             <option value="AB-">AB-</option>
                             <option value="O-">O-</option>
                           </Form.Select>
-                          {errors.name && (
-                            <span className="text-danger">
-                              Name is required
-                            </span>
-                          )}
                         </Form.Group>
                       </Col>
 
@@ -287,13 +331,8 @@ export default function Application() {
                             size="sm"
                             type="file"
                             className={`${Style.inputField} input`}
-                            {...register("profile_image", { required: true })}
+                            {...register("profile_image")}
                           />
-                          {errors.profile_image && (
-                            <span className="text-danger">
-                              Profile Image is required
-                            </span>
-                          )}
                         </Form.Group>
                       </Col>
 
@@ -610,7 +649,7 @@ export default function Application() {
                         disabled={loadingBtn}
                         className={Style.submit}
                       >
-                        {loadingBtn ? "Inserting..." : "Submit"}
+                        {loadingBtn ? "Processing..." : "Submit"}
                       </Button>
                     </div>
                   </Form>

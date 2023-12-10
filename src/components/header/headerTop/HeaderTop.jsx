@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 import Style from './headerTop.module.css';
 
 const HeaderTop = () => {
-  const { data, loading } = useFetch("/home/csfdu");
+  const { data, loading } = useFetch("/home");
   return (
     <header>
       <Container>
