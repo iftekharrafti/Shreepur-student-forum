@@ -5,6 +5,11 @@
 .logo a{
     text-decoration: none;
 }
+.logo img{
+    height: 50px;
+    width: 55px;
+    object-fit: cover;
+}
 .name{
     font-size: 35px;
     font-weight: 700;
@@ -16,6 +21,11 @@
 @media (max-width: 768px) {
     .logo{
         padding: 10px 0;
+    }
+    .logo img{
+        height: 40px;
+        width: 45px;
+        object-fit: cover;
     }
     .name{
         font-size: 26px;

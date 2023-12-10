@@ -15,7 +15,7 @@ const HeaderTop = () => {
             <img
               src="/shreepur.jpeg"
               alt=""
-              style={{ height: "50px", width: "55px", objectFit: "cover" }}
+              
             />
             <h3 className={Style.name} >
               {data?.admin?.name}
