@@ -98,7 +98,9 @@ const Footer = () => {
           </Col>
           <Col lg={2} md={6} sm={6}>
             <h4 className={Style.title}>Developed By</h4>
-            <img src="./ancovabr.png" alt="" className={Style.ancovaLogo} />
+            <a href="http://ancovabd.com/" target="_blank">
+              <img src="./ancovabr.png" alt="" className={Style.ancovaLogo} />
+            </a>
           </Col>
         </Row>
       </Container>

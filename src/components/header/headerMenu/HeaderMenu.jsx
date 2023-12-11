@@ -49,22 +49,6 @@ const HeaderMenu = () => {
             </Nav>
             <Nav>
               <Link
-                href="/advisor"
-                className={activeItem === "/advisor" ? Style.active : ""}  onClick={() => setExpanded(false)}
-              >
-                উপদেষ্টামন্ডলী
-              </Link>
-            </Nav>
-            <Nav>
-              <Link
-                href="/alumni"
-                className={activeItem === "/alumni" ? Style.active : ""}  onClick={() => setExpanded(false)}
-              >
-                এলামনাই
-              </Link>
-            </Nav>
-            <Nav>
-              <Link
                 href="/executive"
                 className={activeItem === "/executive" ? Style.active : ""}  onClick={() => setExpanded(false)}
               >
@@ -85,7 +69,7 @@ const HeaderMenu = () => {
             onMouseLeave={handleMouseLeave}>
                 {/* <div  style={{backgroundColor: 'red'}}> */}
                 <NavDropdown.Item className={`${Style.dropdownItem} py-2 px-3`}>
-                  <Link href="/senior"  onClick={() => setExpanded(false)}>সিনিয়র সদস্য</Link>
+                  <Link href="/senior"  onClick={() => setExpanded(false)}>সম্মানিত সদস্য</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item className={`${Style.dropdownItem} py-2 px-3`}>
                   <Link href="/general"  onClick={() => setExpanded(false)}>সাধারণ সদস্য</Link>
@@ -144,12 +128,3 @@ const HeaderMenu = () => {
 };
 
 export default HeaderMenu;
-
-//  <Navbar collapseOnSelect sticky="top" data-bs-theme="dark" className={Style.navbar}>
-//       <Container>
-//       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//         <Navbar.Collapse id="responsive-navbar-nav">
-
-//         </Navbar.Collapse>
-//       </Container>
-//     </Navbar>

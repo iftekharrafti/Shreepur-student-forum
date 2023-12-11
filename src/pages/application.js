@@ -70,22 +70,17 @@ export default function Application() {
       data.universityName = selectUniversity;
       data.unionName = selectUnion;
 
-      if (!bloodGroup) {
-        toast.error("Please Select Blood Group");
-        setLoadingBtn(false);
-        return;
-      }
-      if (bloodGroup === "নির্বাচন করুন" || bloodGroup === "") {
-        toast.error("Please Select Blood Group");
-        setLoadingBtn(false);
-        return;
-      }
-
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("phone", data.phone);
-      formData.append("email", data.email);
-      formData.append("blood", data.bloodGroup);
+      if(data.email){
+          formData.append("email", data.email);
+        }
+      
+      if(data.bloodGroup){
+        formData.append("blood", data.bloodGroup);
+      }
+      
 
       if (data.profile_image[0]) {
         const profile_image = data.profile_image[0];
@@ -150,7 +145,9 @@ export default function Application() {
       }
 
       if (showLevel?.level_permanent_address) {
-        formData.append("permanent_address", data.permanent_address);
+        if(data.permanent_address){
+          formData.append("permanent_address", data.permanent_address);
+        }
       }
 
       if (showLevel?.level_custom3) {
@@ -238,7 +235,7 @@ export default function Application() {
                             type="text"
                             className={Style.inputField}
                             {...register("name", { required: true })}
-                            placeholder="শিক্ষার্থীর নাম"
+                            placeholder="নাম"
                           />
                           {errors.name && (
                             <span className="text-danger">
@@ -255,7 +252,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            রক্তের গ্রুপ <span className="text-danger">*</span>
+                            রক্তের গ্রুপ 
                           </Form.Label>
                           <Form.Select
                             value={bloodGroup}
@@ -308,20 +305,15 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            ই-মেইল <span className="text-danger">*</span>
+                            ই-মেইল 
                           </Form.Label>
                           <Form.Control
                             size="sm"
                             type="email"
                             className={`${Style.inputField} input`}
-                            {...register("email", { required: true })}
+                            {...register("email")}
                             placeholder="ই-মেইল"
                           />
-                          {errors.email && (
-                            <span className="text-danger">
-                              Email is required
-                            </span>
-                          )}
                         </Form.Group>
                       </Col>
 
@@ -332,7 +324,7 @@ export default function Application() {
                           controlId="exampleForm.ControlInput1"
                         >
                           <Form.Label className={Style.inputLabel}>
-                            প্রোপাইল ছবি(৩০০*৩০০)
+                            প্রোফাইল ছবি(৩০০*৩০০)
                           </Form.Label>
                           <Form.Control
                             size="sm"
@@ -541,22 +533,15 @@ export default function Application() {
                             controlId="exampleForm.ControlInput1"
                           >
                             <Form.Label className={Style.inputLabel}>
-                              {showLevel?.level_permanent_address} <span className="text-danger">*</span>
+                              {showLevel?.level_permanent_address}
                             </Form.Label>
                             <Form.Control
                               size="sm"
                               type="text"
                               className={`${Style.inputField} input`}
-                              {...register("permanent_address", {
-                                required: true,
-                              })}
+                              {...register("permanent_address")}
                               placeholder={showLevel?.level_permanent_address}
                             />
-                            {errors.permanent_address && (
-                              <span className="text-danger">
-                                {showLevel?.level_permanent_address} is required
-                              </span>
-                            )}
                           </Form.Group>
                         </Col>
                       )}
