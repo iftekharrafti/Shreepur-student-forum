@@ -24,8 +24,8 @@ export default function Home() {
         ) : (
           <>
             <CarouselBanner data={data} loading={loading} />
-            <HomeCountUp data={data} loading={loading} />
             <President data={data} loading={loading} />
+            <HomeCountUp data={data} loading={loading} />
           </>
         )}
       </main>

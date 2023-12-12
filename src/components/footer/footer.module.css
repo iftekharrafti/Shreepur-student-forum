@@ -1,13 +1,13 @@
 .footer {
   background-color: #000000;
-  color: #777;
+  color: #a7a5af;
   padding: 60px 0;
 }
 .title {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #cfb7b7;
+  color: #f4f4f4;
 }
 .footerItems {
   list-style-type: none;
@@ -17,7 +17,7 @@
   font-size: 20px;
 }
 .footerLink {
-  color: #777;
+  color: #a7a5af;
   text-decoration: none;
 }
 .footerLink:hover span {
