@@ -1,35 +1,70 @@
-.presidentSecretery{
-    margin-bottom: 70px;
-}
-.col{
+/* .presidentSecretery { */
+/* margin-bottom: 70px; */
+/* } */
+.col {
     display: flex;
     align-items: center;
-}
-.imgContent{
-    display: flex;
-    justify-content: center;
-}
-.img{
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    object-fit: fill;
-}
-.content{
+  }
+  .imgContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-.text1{
-    font-size: 16px;
+    align-items: center;
+    background: white;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  }
+  .img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: fill;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    padding: 30px 40px;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  }
+  .text1 {
+    font-size: 15px;
     line-height: 1.7;
-}
-.title{
-    font-size: 32px;
+  }
+  .title {
+    font-size: 20px;
     font-weight: 700;
-    color: #009CFF;
-}
-.name{
-    font-size: 22px;
+    color: #009cff;
+    /* font-family: var(--font-family); */
+  }
+  .name {
+    font-size: 15px;
     font-weight: 600;
-}
+    font-family: var(--font-family);
+    color: #002147;
+  }
+  .workplace {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .button {
+    width: 140px;
+    height: 32px;
+    border-radius: 20px;
+    background-color: transparent;
+    color: #002147;
+    border: 2px solid #002147;
+  }
+  .button:hover {
+    background-color: #002147;
+    color: #ffffff !important;
+    border: 2px solid #002147;
+    transition: 0.3s;
+  }
+  
