@@ -68,14 +68,12 @@ const Footer = () => {
                     <span>Terms & Condition</span>
                   </li>
                 </Link>
-                <Link href="/" className={Style.footerLink}>
                   <li
                     className={`${Style.footerItem} d-flex align-items-center p-0 mb-2`}
                   >
                     <BsArrowRightCircleFill className={Style.footerIcon} />
                     <a style={{textDecoration: "none", color: "#777"}} href="https://laravel.amaderthikana.com/admin/login">Login</a>
                   </li>
-                </Link>
               </ul>
             </div>
           </Col>
