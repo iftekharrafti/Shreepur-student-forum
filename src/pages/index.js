@@ -7,7 +7,8 @@ import HomeCountUp from "@/components/home/homeCountUp/HomeCountUp";
 import CarouselBanner from "@/components/home/carouselBanner/CarouselBanner";
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { TITLE } from "@/utils/api";
-import Advertise from "@/components/advertise/Advertise";
+import Advertise from "@/components/home/advertise/Advertise";
+import HomeUnionMember from "@/components/home/homeUnionMember/HomeUnionMember";
 
 export default function Home() {
   const { data, loading } = useFetch("/home");
@@ -25,6 +26,7 @@ export default function Home() {
         ) : (
           <>
             <CarouselBanner data={data} loading={loading} />
+            <HomeUnionMember />
             <President data={data} loading={loading} />
             <Advertise />
             <HomeCountUp data={data} loading={loading} />
