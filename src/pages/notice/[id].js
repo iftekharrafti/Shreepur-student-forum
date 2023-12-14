@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Img from "@/components/lazyLoadImage/Img";
 import useFetch from "@/hooks/useFetch";
 import { baseImgUrl } from "@/utils/imgUrl";
@@ -11,6 +12,7 @@ const NoticeDetails = () => {
 
   const router = useRouter();
   const { id } = router.query;
+  console.log(id)
 
   const notice = data?.data?.find((item) => item.id === parseInt(id));
 
