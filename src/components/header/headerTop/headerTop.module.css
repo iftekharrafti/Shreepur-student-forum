@@ -6,8 +6,8 @@
     text-decoration: none;
 }
 .logo img{
-    height: 50px;
-    width: 55px;
+    height: 62px;
+    width: 266px;
     object-fit: cover;
 }
 .name{
@@ -23,8 +23,8 @@
         padding: 10px 0;
     }
     .logo img{
-        height: 40px;
-        width: 45px;
+        height: 55px;
+        width: 266px;
         object-fit: cover;
     }
     .name{

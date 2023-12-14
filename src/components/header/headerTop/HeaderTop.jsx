@@ -17,9 +17,6 @@ const HeaderTop = () => {
               alt=""
               
             />
-            <h3 className={Style.name} >
-              {data?.admin?.name}
-            </h3>
           </Link>
         </div>
       </Container>

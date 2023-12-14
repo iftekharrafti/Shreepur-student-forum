@@ -56,7 +56,7 @@ const HomeUnionMember = () => {
   return (
     <div className="mb-4">
       <Container>
-        <Row>
+        <Row className="shadow border p-4">
           <Col md={9} className="mx-auto">
             <Form action="" onSubmit={handleMemberSubmit}>
               <Row>
