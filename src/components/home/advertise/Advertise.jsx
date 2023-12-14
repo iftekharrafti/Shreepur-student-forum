@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const Advertise = () => {
   const { data, loading } = useFetch("/advertisement_view");
-  console.log(data);
+
   return (
     <div className="mb-4">
       <Container>

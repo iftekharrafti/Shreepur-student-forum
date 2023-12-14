@@ -51,15 +51,25 @@ const HomeUnionMember = () => {
     }
     console.log(selectUnion);
     console.log(selectMember);
+
+    axios.get(`${BASE_URL}/memberGetByUnion?union_id=${selectUnion}&member_category=${selectMember}`)
+  .then(response => {
+    // Handle the successful response here
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Handle errors here
+    console.error(error);
+  });
   };
 
   return (
     <div className="mb-4">
       <Container>
-        <Row className="shadow border p-4">
+        <Row>
           <Col md={9} className="mx-auto">
             <Form action="" onSubmit={handleMemberSubmit}>
-              <Row>
+              <Row className="shadow border p-4">
                 <Col md={5}>
                   <Form.Group
                     className={`${Style.contact} mb-3`}
@@ -94,8 +104,8 @@ const HomeUnionMember = () => {
                       className={`${Style.inputField} ${Style.formSelect}`}
                     >
                       <option>সদস্য নির্বাচন করুন</option>
-                      <option value="senior">সম্মানিত সদস্য</option>
-                      <option value="general">সাধারণ সদস্য</option>
+                      <option value="Senior">সম্মানিত সদস্য</option>
+                      <option value="General">সাধারণ সদস্য</option>
                     </Form.Select>
                   </Form.Group>
                 </Col>
