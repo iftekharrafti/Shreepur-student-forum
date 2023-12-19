@@ -21,7 +21,7 @@ export default function Senior() {
         ) : (
           <>
             <div className="headerTitle mt-5">
-              <h3 class="headerTitleMain">সিনিয়র সদস্য</h3>
+              <h3 class="headerTitleMain">সম্মানিত সদস্য</h3>
             </div>
             {/* Advisor Details */}
             <Container className="mt-4">
