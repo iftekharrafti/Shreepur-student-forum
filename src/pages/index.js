@@ -10,9 +10,11 @@ import { TITLE } from "@/utils/api";
 import Advertise from "@/components/home/advertise/Advertise";
 import HomeUnionMember from "@/components/home/homeUnionMember/HomeUnionMember";
 import HomeWelcomeMessage from "@/components/home/homeWelcomeMessage/HomeWelcomeMessage";
+import HomeNotice from "@/components/home/homeNotice/HomeNotice";
 
 export default function Home() {
   const { data, loading } = useFetch("/home");
+  const { data: notices, loading: noticeLoading } = useFetch("/notice");
   return (
     <>
       <Head>
@@ -32,6 +34,7 @@ export default function Home() {
             <President data={data} loading={loading} />
             <Advertise />
             <HomeCountUp data={data} loading={loading} />
+            <HomeNotice noticeData={notices?.data} />
           </>
         )}
       </main>

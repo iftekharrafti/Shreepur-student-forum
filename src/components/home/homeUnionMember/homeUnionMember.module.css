@@ -4,11 +4,11 @@
   border-radius: 20px;
   background-color: transparent;
   color: #002147;
-  border: 2px solid #002147;
+  border: 2px solid #009cff;
 }
 .button:hover {
-  background-color: #002147;
+  background-color: #009cff;
   color: #ffffff !important;
-  border: 2px solid #002147;
+  border: 2px solid #009cff;
   transition: 0.3s;
 }

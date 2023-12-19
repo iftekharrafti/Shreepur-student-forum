@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { Button, Col } from "react-bootstrap";
 import Img from "../lazyLoadImage/Img";
@@ -24,6 +25,7 @@ const NoticeCard = ({ item }) => {
             <img
               src="/department.jpg"
               className={`${Style.cardImg} img-fluid`}
+              alt=""
             />
           ) : (
             <Img
