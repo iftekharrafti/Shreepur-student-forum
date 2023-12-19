@@ -4,6 +4,7 @@ import { Container, Row } from "react-bootstrap";
 import NoticeCard from "@/components/noticeCard/NoticeCard";
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { TITLE } from "@/utils/api";
+import MemberSkeleton from "@/components/loader/MemberSkeleton";
 
 export default function Notice() {
   const { data, loading } = useFetch("/notice");
@@ -17,7 +18,7 @@ export default function Notice() {
       </Head>
       <main>
         {loading ? (
-          <LoadingSpinner />
+          <MemberSkeleton />
         ) : (
           <>
             {/* Notice Title */}
