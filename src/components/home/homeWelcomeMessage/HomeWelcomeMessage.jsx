@@ -2,8 +2,7 @@ import useFetch from "@/hooks/useFetch";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-const HomeWelcomeMessage = () => {
-  const { data, loading } = useFetch("/Organization_message");
+const HomeWelcomeMessage = ({ welcomeMessage }) => {
   return (
     <div>
       <Container>
@@ -12,7 +11,7 @@ const HomeWelcomeMessage = () => {
             <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#009cff" }}>
               Welcome Message from University Student&apos;s Association
             </h2>
-            <p>{data?.data[0]?.dureg}</p>
+            <p>{welcomeMessage?.data[0]?.dureg}</p>
           </Col>
         </Row>
       </Container>

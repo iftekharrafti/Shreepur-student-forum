@@ -11,9 +11,15 @@ import Advertise from "@/components/home/advertise/Advertise";
 import HomeUnionMember from "@/components/home/homeUnionMember/HomeUnionMember";
 import HomeWelcomeMessage from "@/components/home/homeWelcomeMessage/HomeWelcomeMessage";
 import HomeNotice from "@/components/home/homeNotice/HomeNotice";
+import SliderSkeleton from "@/components/loader/SliderSkeleton";
+import MemberSkeleton from "@/components/loader/MemberSkeleton";
+import FeaturesSkeleton from "@/components/loader/FeaturesSkeleton";
 
 export default function Home() {
   const { data, loading } = useFetch("/home");
+  const { data: welcomeMessage, loading: loadingMessage } = useFetch(
+    "/Organization_message"
+  );
   const { data: notices, loading: noticeLoading } = useFetch("/notice");
   return (
     <>
@@ -24,19 +30,37 @@ export default function Home() {
         <link rel="icon" href="./shreepur.jpeg" />
       </Head>
       <main>
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <>
+        <>
+          {loading ? (
+            <SliderSkeleton />
+          ) : (
             <CarouselBanner data={data} loading={loading} />
-            <HomeUnionMember />
-            <HomeWelcomeMessage />
-            <President data={data} loading={loading} />
-            <Advertise />
+          )}
+
+          <HomeUnionMember />
+
+          {loading ? (
+            <FeaturesSkeleton />
+          ) : (
+            <>
+              <HomeWelcomeMessage welcomeMessage={welcomeMessage} />
+              <President data={data} loading={loading} />
+            </>
+          )}
+
+          <Advertise />
+          {loading ? (
+            <MemberSkeleton />
+          ) : (
             <HomeCountUp data={data} loading={loading} />
+          )}
+
+          {noticeLoading ? (
+            <MemberSkeleton />
+          ) : (
             <HomeNotice noticeData={notices?.data} />
-          </>
-        )}
+          )}
+        </>
       </main>
     </>
   );
