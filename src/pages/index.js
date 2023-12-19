@@ -9,6 +9,7 @@ import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { TITLE } from "@/utils/api";
 import Advertise from "@/components/home/advertise/Advertise";
 import HomeUnionMember from "@/components/home/homeUnionMember/HomeUnionMember";
+import HomeWelcomeMessage from "@/components/home/homeWelcomeMessage/HomeWelcomeMessage";
 
 export default function Home() {
   const { data, loading } = useFetch("/home");
@@ -27,6 +28,7 @@ export default function Home() {
           <>
             <CarouselBanner data={data} loading={loading} />
             <HomeUnionMember />
+            <HomeWelcomeMessage />
             <President data={data} loading={loading} />
             <Advertise />
             <HomeCountUp data={data} loading={loading} />
